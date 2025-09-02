@@ -81,7 +81,7 @@ public class Time
 
     public Time()
     {
-        Hours = 00; Minutes = 00; Seconds = 00; Milliseconds = 000;
+        Hours = 0; Minutes = 0; Seconds = 0; Milliseconds = 0;
     }
 
     public Time(int hour)
@@ -122,12 +122,32 @@ public class Time
 
     }
 
+    //public override string ToString()
+    // {
+    //     DateTime dt = new DateTime(1, 1, 1, Hours, Minutes, Seconds, Milliseconds);
+
+    //     return dt.ToString("hh:mm:ss.fff tt");
+    // }
+
+   // public override string ToString()
+   // {
+    //    int hour12 = Hours % 12;
+    //    if (hour12 == 0) hour12 = 12;
+    //    string ampm = Hours < 12 ? "AM" : "PM";
+   //     return $"{hour12:D2}:{Minutes:D2}:{Seconds:D2}.{Milliseconds:D3} {ampm}";
+    //}
+
     public override string ToString()
     {
-        DateTime dt = new DateTime(1, 1, 1, Hours, Minutes, Seconds, Milliseconds);
-        return dt.ToString("hh:mm:ss.fff tt");
-    }
+        int hour12 = Hours % 12;
+        if (hour12 == 0) hour12 = 12;
+        string ampm = Hours < 12 ? "AM" : "PM";
 
+        // If it's 12 AM, display 00 in the hour
+        string hourDisplay = (Hours == 0) ? "00" : hour12.ToString("D2");
+
+        return $"{hourDisplay}:{Minutes:D2}:{Seconds:D2}.{Milliseconds:D3} {ampm}";
+    }
 
 
     //validators
