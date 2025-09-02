@@ -1,5 +1,6 @@
 ﻿namespace workshop1.Core;
 
+
 public class Time
 {
     //private fields
